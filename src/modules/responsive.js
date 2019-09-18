@@ -1,8 +1,6 @@
 import { Dimensions, Platform, PixelRatio } from 'react-native';
 
-const { width: SCREEN_WIDTH /* , height: SCREEN_HEIGHT */ } = Dimensions.get(
-  'window',
-);
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 /*
  * Adjusts size values based on device of the user
@@ -15,5 +13,3 @@ export default function normalize(size) {
 
   return Math.round(PixelRatio.roundToNearestPixel(newSize) - 2);
 }
-
-// Code Source: https://stackoverflow.com/questions/33628677/react-native-responsive-font-size

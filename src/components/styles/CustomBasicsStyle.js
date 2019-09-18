@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-import normalize from '../../modules/responsive.js'
+import normalize from '../../modules/responsive';
 
 export default StyleSheet.create({
   // Container
   keyboardAvoidingView: {
     height: normalize(280),
-    width: '100%', 
-    justifyContent: 'flex-end', 
+    width: '100%',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   // Buttons
@@ -21,20 +21,20 @@ export default StyleSheet.create({
   primaryButton: {
     backgroundColor: '#FF5035',
   },
-  primaryButtonText: {
-    color: 'snow',
-    fontWeight: 'bold',
-  },
   secondaryButton: {
     borderColor: '#FF5035',
     borderWidth: 1,
+  },
+  // Text
+  text: {
+    fontSize: normalize(15),
   },
   secondaryButtonText: {
     color: '#FF5035',
     fontWeight: 'bold',
   },
-  // Text
-  text: {
-    fontSize: normalize(15),
+  primaryButtonText: {
+    color: 'snow',
+    fontWeight: 'bold',
   },
 });

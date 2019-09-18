@@ -1,10 +1,19 @@
-import { Platform, StatusBar, StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
-import normalize from '../../modules/responsive.js';
+import normalize from '../../modules/responsive';
 
 export default StyleSheet.create({
-// General Properties
+  // Container
+  keyboardAvoidingView: {
+    height: normalize(280),
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'red',
+  },
+  // General Properties
   oneHundredPercentWidth: {
     width: '100%',
   },
@@ -13,7 +22,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
   },
-// Containers
+  // Containers
   container: {
     flex: 1,
     alignItems: 'center',
@@ -73,16 +82,16 @@ export default StyleSheet.create({
     maxWidth: normalize(250),
     flexWrap: 'wrap',
     padding: normalize(10),
-    opacity: 0.8
+    opacity: 0.8,
   },
-// Space Boxes
+  // Space Boxes
   fivePercentSpace: {
     height: '5%',
   },
   thirteenSpace: {
     height: normalize(13),
   },
-// Text
+  // Text
   text: {
     fontFamily: 'ProximaNova-Regular',
     fontSize: normalize(15),
@@ -91,6 +100,9 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: normalize(25),
     fontFamily: 'ProximaNova-Bold',
+  },
+  logoAttemptText: {
+    marginBottom: normalize(15),
   },
   textInput: {
     fontFamily: 'ProximaNova-Regular',
@@ -114,21 +126,13 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   passwordWithButtons: {
-    width: '85%', // leave space for buttons
+    width: '85%', // leave 15% space for buttons
   },
   subtext: {
     marginTop: normalize(20),
     color: '#898989',
   },
-// Borders
-  grayBorder: {
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
-// Other
-  logoAttemptText: {
-    marginBottom: normalize(15),
-  },
+  // Other
   logoActivityIndicator: {
     margin: normalize(8),
   },

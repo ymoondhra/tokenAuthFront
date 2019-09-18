@@ -4,26 +4,29 @@ import {
   ScrollView,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { API_URL } from '../globals/constants';
+import API_URL from '../globals/constants';
 import getMostSignificantError from '../modules/authentication';
 import styles from './styles/ScreenStyle';
 import { AppButton, AppKeyboardAvoidingView } from '../components/CustomBasics';
+import PasswordButtons from '../components/PasswordButtons';
+
 
 // Note: It is highly recommended to require the user to enter their email
 //       along with their username to create an account
 
-export default class LoginScreen extends React.Component {
+export default class SignUpScreen extends React.Component {
   constructor() {
     super();
     this.state = {
       username: '',
       email: '',
-      password1: '',
-      password2: '',
+      password: '',
+      notVisible: true,
       error: ' ',
       loadingResponse: false,
     };
@@ -34,7 +37,9 @@ export default class LoginScreen extends React.Component {
    * If account creation is successful, an authentication token will be returned from the fetch request
    */
   createAccount = () => {
-    const { username, email, password1, password2 } = this.state;
+    const { username, email, password } = this.state;
+    const password1 = password;
+    const password2 = password;
     const { navigation } = this.props;
 
     this.setState(
@@ -113,7 +118,7 @@ export default class LoginScreen extends React.Component {
   };
 
   render() {
-    const { error, loadingResponse } = this.state;
+    const { password, notVisible, error, loadingResponse } = this.state;
     const { navigation } = this.props;
 
     return (
@@ -136,6 +141,9 @@ export default class LoginScreen extends React.Component {
                 blurOnSubmit={false}
                 editable
                 placeholder="Create a username"
+                ref={usernameRef => {
+                  this.usernameRef = usernameRef;
+                }}
                 style={styles.textInput}
                 onChangeText={usernameInput =>
                   this.setState({ username: usernameInput, error: ' ' })
@@ -157,43 +165,51 @@ export default class LoginScreen extends React.Component {
                 style={[styles.textInput]}
                 onChangeText={email => this.setState({ email, error: ' ' })}
                 onSubmitEditing={() => {
-                  this.password1Input.focus();
+                  this.passwordInput.focus();
                 }}
               />
             </View>
-            <View style={[styles.midTextBox, styles.textBox]}>
+            <View
+              style={[
+                styles.passwordWithButtonsContainer,
+                styles.lowerTextBox,
+                styles.textBox,
+              ]}
+            >
               <TextInput
                 autoCapitalize="none"
-                blurOnSubmit={false}
+                autoCompleteType="password"
                 editable
                 placeholder="Create a password"
-                ref={password1Input => {
-                  this.password1Input = password1Input;
+                ref={passwordInput => {
+                  this.passwordInput = passwordInput;
                 }}
-                secureTextEntry
-                style={[styles.textInput]}
+                secureTextEntry={notVisible}
+                style={[styles.textInput, styles.passwordWithButtons]}
                 textContentType="none" // attempt to avoid strong password bug
-                onChangeText={password1 =>
-                  this.setState({ password1, error: ' ' })
-                }
-                onSubmitEditing={() => this.password2Input.focus()}
-              />
-            </View>
-            <View style={[styles.lowerTextBox, styles.textBox]}>
-              <TextInput
-                autoCapitalize="none"
-                editable
-                placeholder="Re-enter your password"
-                ref={password2Input => {
-                  this.password2Input = password2Input;
-                }}
-                secureTextEntry
-                style={[styles.textInput]}
-                textContentType="none" // attempt to avoid strong password bug
-                onChangeText={password2 =>
-                  this.setState({ password2, error: ' ' })
+                onChangeText={passwordInput =>
+                  this.setState({ password: passwordInput, error: ' ' })
                 }
                 onSubmitEditing={this.createAccount}
+              />
+              <PasswordButtons
+                notVisible={notVisible}
+                password={password}
+                clearOnPress={() => {
+                  this.setState(
+                    () => ({ password: '', error: ' ' }),
+                    () => {
+                      this.passwordInput.clear();
+                      this.passwordInput.focus();
+                    },
+                  );
+                }}
+                visibleOnPress={() => {
+                  this.setState(
+                    state => ({ notVisible: !state.notVisible }),
+                    this.passwordInput.focus(),
+                  );
+                }}
               />
             </View>
           </View>
@@ -203,7 +219,7 @@ export default class LoginScreen extends React.Component {
           <AppButton
             disabled={loadingResponse}
             primary
-            title="Sign Up"
+            title="Create Account"
             onPress={this.createAccount}
           />
         </AppKeyboardAvoidingView>

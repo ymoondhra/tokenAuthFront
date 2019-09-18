@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import { API_URL } from '../globals/constants';
+import API_URL from '../globals/constants';
 import getMostSignificantError from '../modules/authentication';
 import styles from './styles/ScreenStyle';
 import { AppButton, AppKeyboardAvoidingView } from '../components/CustomBasics';

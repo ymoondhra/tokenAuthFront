@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { API_URL } from '../globals/constants';
+import API_URL from '../globals/constants';
 import getMostSignificantError from '../modules/authentication';
 import styles from './styles/ScreenStyle';
 import { AppButton, AppKeyboardAvoidingView } from '../components/CustomBasics';
-import { PasswordButtons } from '../components/PasswordButtons';
+import PasswordButtons from '../components/PasswordButtons';
 
 export default class LoginScreen extends React.Component {
   constructor() {

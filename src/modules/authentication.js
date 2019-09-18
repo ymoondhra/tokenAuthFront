@@ -58,14 +58,12 @@ export default function getMostSignificantError(jsonResponse) {
 authErrorDict = {
   // Username
   'A user with that username already exists.': {
-    text:
-      'The username you provided is already registered', // Please use it to log in',
+    text: 'The username you provided is already registered', // Please use it to log in',
     priority: 5,
   },
   // Email
   'A user is already registered with this e-mail address.': {
-    text:
-      'The email address you provided is already registered', // Please use it to log in',
+    text: 'The email address you provided is already registered', // Please use it to log in',
     priority: 5,
   },
   'Enter a valid email address.': {
@@ -94,7 +92,7 @@ authErrorDict = {
     text: 'Your two passwords did not match',
     priority: 4,
   },
-  "Must include \"username\" and \"password\".": {
+  'Must include "username" and "password".': {
     text: 'Please fill out all required fields',
     priority: 3,
   },
@@ -110,5 +108,5 @@ authErrorDict = {
   'This field may not be null.': {
     text: 'Please fill out all required fields',
     priority: 3,
-  }
+  },
 };

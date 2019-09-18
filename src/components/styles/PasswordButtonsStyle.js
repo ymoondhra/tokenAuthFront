@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-import normalize from '../../modules/responsive.js'
+import normalize from '../../modules/responsive';
 
 export default StyleSheet.create({
-// Password Buttons
+  // Password Buttons
   passwordButtons: {
     width: '15%',
     height: '100%',
@@ -18,18 +18,10 @@ export default StyleSheet.create({
     aspectRatio: 1,
     marginLeft: normalize(5),
   },
-  passwordButtonSpace: {
-    width: 0,
-  },
-// Password Images
-  clearImg: {
+  // Password Images
+  passwordImg: {
     width: '100%',
     height: '100%',
     opacity: 0.7,
   },
-  visibleImg: {
-    width: '100%',
-    height: '100%',
-    opacity: 0.7,
-  }
 });

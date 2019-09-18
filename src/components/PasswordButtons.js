@@ -3,56 +3,38 @@ import { Image, TouchableOpacity, View } from 'react-native';
 
 import styles from './styles/PasswordButtonsStyle';
 
-export class PasswordButtons extends React.PureComponent {
+const clearIconImg = require('../../assets/clear-icon.png');
+const visibleIconImg = require('../../assets/visible-icon.png');
+const invisibleIconImg = require('../../assets/invisible-icon.png');
+
+export default class PasswordButtons extends React.PureComponent {
   render() {
-    const {
-      clearOnPress,
-      visibleOnPress,
-      notVisible,
-      password,
-      ...props
-    } = this.props;
+    const { clearOnPress, visibleOnPress, notVisible, password } = this.props;
+
+    if (password === '' || password === undefined)
+      return <View style={styles.passwordButtons} />;
+
     return (
       <View style={styles.passwordButtons}>
-        {password !== '' && <ClearButton onPress={clearOnPress} />}
-        <View style={styles.passwordButtonSpace} />
-        {password !== '' && (
-          <VisibleButton onPress={visibleOnPress} notVisible={notVisible} />
-        )}
+        <TouchableOpacity style={styles.passwordButton} onPress={clearOnPress}>
+          <Image
+            style={styles.passwordImg}
+            source={clearIconImg}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.passwordButton}
+          notVisible={notVisible}
+          onPress={visibleOnPress}
+        >
+          <Image
+            style={styles.passwordImg}
+            source={notVisible ? visibleIconImg : invisibleIconImg}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
       </View>
-    );
-  }
-}
-
-export class ClearButton extends React.PureComponent {
-  render() {
-    const { style, ...props } = this.props;
-    return (
-      <TouchableOpacity style={[styles.passwordButton, style]} {...props}>
-        <Image
-          style={styles.clearImg}
-          source={require('../../assets/clear-icon.png')}
-          resizeMode="contain"
-        />
-      </TouchableOpacity>
-    );
-  }
-}
-export class VisibleButton extends React.PureComponent {
-  render() {
-    const { style, ...props } = this.props;
-    return (
-      <TouchableOpacity style={[styles.passwordButton, style]} {...props}>
-        <Image
-          style={styles.visibleImg}
-          source={
-            props.notVisible
-              ? require('../../assets/visible-icon.png')
-              : require('../../assets/invisible-icon.png')
-          }
-          resizeMode="contain"
-        />
-      </TouchableOpacity>
     );
   }
 }

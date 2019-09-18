@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, View, Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { API_URL } from '../globals/constants';
+import API_URL from '../globals/constants';
 import styles from './styles/ScreenStyle';
 
 export default class LogoScreen extends React.Component {
