@@ -4,7 +4,6 @@ import {
   ScrollView,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -79,7 +78,7 @@ export default class SignUpScreen extends React.Component {
               );
             } else {
               // pass all the error messages about why account creation failed into getMostSignificantError
-              let mostSignificantError = getMostSignificantError(
+              const mostSignificantError = getMostSignificantError(
                 createResponseJson,
               );
               if (
@@ -227,7 +226,7 @@ export default class SignUpScreen extends React.Component {
           <AppButton
             disabled={loadingResponse}
             primary
-            title="Create Account"
+            title="Sign Up"
             onPress={this.createAccount}
           />
         </AppKeyboardAvoidingView>

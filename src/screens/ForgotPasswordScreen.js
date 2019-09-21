@@ -124,9 +124,7 @@ export default class ForgotPasswordScreen extends React.Component {
           onPress={() => navigation.navigate('Login')}
         />
         <View style={[styles.singleTextBox, styles.developerMessageBox]}>
-          <Text style={styles.text}>
-            Note to Developers:
-          </Text>
+          <Text style={styles.text}>Note to Developers:</Text>
           <Text style={styles.text}>
             This feature will not work because no email server is configured on
             the back-end.

@@ -186,7 +186,7 @@ export default class LoginScreen extends React.Component {
         <View style={[styles.thirteenSpace]} />
         <AppButton
           disabled={loadingResponse}
-          title="Create Account"
+          title="Sign Up"
           onPress={() => navigation.navigate('SignUp')}
         />
         <TouchableOpacity
