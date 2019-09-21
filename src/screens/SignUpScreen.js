@@ -9,12 +9,11 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import API_URL from '../globals/constants';
+import API_URL from '../globals/server';
 import getMostSignificantError from '../modules/authentication';
 import styles from './styles/ScreenStyle';
 import { AppButton, AppKeyboardAvoidingView } from '../components/CustomBasics';
 import PasswordButtons from '../components/PasswordButtons';
-
 
 // Note: It is highly recommended to require the user to enter their email
 //       along with their username to create an account
@@ -73,6 +72,7 @@ export default class SignUpScreen extends React.Component {
                 this.setState(
                   () => ({
                     loadingResponse: false,
+                    error: ' ',
                   }),
                   () => navigation.navigate('App'),
                 ),
@@ -91,10 +91,12 @@ export default class SignUpScreen extends React.Component {
                 this.setState(
                   () => ({
                     loadingResponse: false,
+                    error: ' ',
                   }),
                   () => {
                     navigation.navigate('Login', {
                       username,
+                      password,
                       error: mostSignificantError,
                     });
                   },
@@ -118,7 +120,13 @@ export default class SignUpScreen extends React.Component {
   };
 
   render() {
-    const { password, notVisible, error, loadingResponse } = this.state;
+    const {
+      username,
+      password,
+      notVisible,
+      error,
+      loadingResponse,
+    } = this.state;
     const { navigation } = this.props;
 
     return (
@@ -227,7 +235,7 @@ export default class SignUpScreen extends React.Component {
         <AppButton
           disabled={loadingResponse}
           title="Log In"
-          onPress={() => navigation.navigate('Login')}
+          onPress={() => navigation.navigate('Login', { username, password })}
         />
         <View style={styles.fivePercentSpace} />
         <ActivityIndicator size="small" animating={loadingResponse} />

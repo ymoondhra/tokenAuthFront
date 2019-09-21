@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import API_URL from '../globals/constants';
+import API_URL from '../globals/server';
 import getMostSignificantError from '../modules/authentication';
 import styles from './styles/ScreenStyle';
 import { AppButton, AppKeyboardAvoidingView } from '../components/CustomBasics';
@@ -125,9 +125,11 @@ export default class ForgotPasswordScreen extends React.Component {
         />
         <View style={[styles.singleTextBox, styles.developerMessageBox]}>
           <Text style={styles.text}>
-            Note to Developers:{'\n'}
+            Note to Developers:
+          </Text>
+          <Text style={styles.text}>
             This feature will not work because no email server is configured on
-            the back-end. More details can be found in the GitHub repository.
+            the back-end.
           </Text>
         </View>
         <View style={styles.fivePercentSpace} />

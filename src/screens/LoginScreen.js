@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import API_URL from '../globals/constants';
+import API_URL from '../globals/server';
 import getMostSignificantError from '../modules/authentication';
 import styles from './styles/ScreenStyle';
 import { AppButton, AppKeyboardAvoidingView } from '../components/CustomBasics';
@@ -31,6 +31,7 @@ export default class LoginScreen extends React.Component {
     const { navigation } = this.props;
     this.setState(() => ({
       username: navigation.getParam('username', ''),
+      password: navigation.getParam('password', ''),
       error: navigation.getParam('error', ' '),
     }));
   }
@@ -87,7 +88,13 @@ export default class LoginScreen extends React.Component {
   };
 
   render() {
-    const { password, notVisible, error, loadingResponse } = this.state;
+    const {
+      username,
+      password,
+      notVisible,
+      error,
+      loadingResponse,
+    } = this.state;
     const { navigation } = this.props;
 
     return (
@@ -108,6 +115,7 @@ export default class LoginScreen extends React.Component {
                 autoCapitalize="none"
                 autoCompleteType="username"
                 blurOnSubmit={false}
+                defaultValue={username}
                 editable
                 placeholder="Enter your username"
                 ref={usernameRef => {
@@ -130,6 +138,7 @@ export default class LoginScreen extends React.Component {
               <TextInput
                 autoCapitalize="none"
                 autoCompleteType="password"
+                defaultValue={password}
                 editable
                 placeholder="Enter your password"
                 ref={passwordInput => {

@@ -4,15 +4,6 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 import normalize from '../../modules/responsive';
 
 export default StyleSheet.create({
-  // Container
-  keyboardAvoidingView: {
-    height: normalize(280),
-    width: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'red',
-  },
   // General Properties
   oneHundredPercentWidth: {
     width: '100%',
@@ -38,7 +29,7 @@ export default StyleSheet.create({
     height: normalize(260),
   },
   signUpKeyboardAvoidingView: {
-    height: normalize(375),
+    height: normalize(310),
   },
   upperTextBox: {
     borderTopLeftRadius: 12,
