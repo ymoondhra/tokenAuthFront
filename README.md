@@ -25,6 +25,7 @@ It utilizes packages for features like [asynchronous storage](https://github.com
 1. `git clone https://github.com/ymoondhra/tokenAuthFront.git`
 2. `cd tokenAuthFront`
 3. `npm install`
+4. `npm audit fix`
 4. Setup iOS: `cd ios && pod install && cd ..`
 5. Setup android: Place [this file](https://raw.githubusercontent.com/facebook/react-native/master/template/android/app/debug.keystore) in `android/app/`
 5. Run iOS: `react-native run-ios` or open `ios/tokenAuthFront.xcworkspace` in XCode and click the play button
