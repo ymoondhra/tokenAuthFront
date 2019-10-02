@@ -30,6 +30,7 @@ It utilizes packages for features like [asynchronous storage](https://github.com
 5. Setup android: Place [this file](https://raw.githubusercontent.com/facebook/react-native/master/template/android/app/debug.keystore) in `android/app/`
 5. Run iOS: `react-native run-ios` or open `ios/tokenAuthFront.xcworkspace` in XCode and click the play button
 6. Run Android: `react-native run-android` or open the `android` folder in Android Studio and run it there
+7. Start the [back-end server](https://github.com/ymoondhra/django-token-base)
 
 #### Versions ####
 
