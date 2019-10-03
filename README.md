@@ -10,6 +10,7 @@ This is a React Native project that serves to professionally and robustly showca
 
 #### Prerequisites ####
 To thoroughly comprehend this solution, it is highly recommended to have a strong understanding of the following:
+  * JavaScript (ES6)
   * [React Native](https://facebook.github.io/react-native/)
   * [React Navigation](https://reactnavigation.org/)
   * [Token authentication](https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication)    
